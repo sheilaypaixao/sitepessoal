@@ -21,10 +21,9 @@ export default function Home() {
     let file = e.target;
     //console.log(file);
 
-    if (refModalCut.current !== null) {
-      refModalCut.current.addPhotoToCut(file);
-      refModalCut.current.open();
-    }
+    
+    refModalCut.current!.addPhotoToCut(file);
+    refModalCut.current!.open();
   }
 
   function submitGallery(e){
@@ -32,15 +31,12 @@ export default function Home() {
 
     let file = e.target.querySelector("#fieldFile");
     
-    if (refGallery.current !== null) {
-      refGallery.current.addPhoto(file);
-    }
+    refGallery.current!.addPhoto(file);
+    
   }
 
   function clickOpenModal(){
-    if (refModalCut.current !== null) {
-      refModalCut.current.open();
-    }
+    refModalCut.current!.open();
   }
 
   return (
