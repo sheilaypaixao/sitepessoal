@@ -53,7 +53,7 @@ export default function Home() {
   let [radio, setRadio] = useState({gender:""});
   let [isEdit, setIsEdit] = useState(false);
   let [currentPage, setCurrentPage] = useState(1);
-  var refPagination = useRef(0);
+  var refPagination = useRef<any>(null);
   var numberPages = 5;
 
   useEffect(() => {
@@ -74,7 +74,7 @@ export default function Home() {
   }
 
   const callbackSubmit = useCallback(() => {
-    refPagination.current.goToLastPage(lstUser.length + 1);
+    refPagination.current!.goToLastPage(lstUser.length + 1);
   }, [{lstUser}]);
 
   return (
