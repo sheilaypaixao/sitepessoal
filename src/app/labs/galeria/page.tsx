@@ -10,8 +10,8 @@ import { useState, useCallback, useEffect, useRef } from 'react';
 
 export default function Home() {
   var [select, setSelect] = useState("fadein2");
-  var refGallery = useRef();
-  var refModalCut = useRef();
+  var refGallery = useRef(null);
+  var refModalCut = useRef(null);
 
   function changeAnimation(e){
     setSelect(e.target.value);
