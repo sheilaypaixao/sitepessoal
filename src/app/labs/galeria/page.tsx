@@ -69,7 +69,7 @@ export default function Home() {
                 <option value="slide-bt2">Slide Bottom-Top 2</option>
               </select>
 
-              <button type="click" onClick={clickOpenModal} >Modal</button>
+              <button type="button" onClick={clickOpenModal} >Modal</button>
 
               <p>teste</p>
         <p>teste</p>
