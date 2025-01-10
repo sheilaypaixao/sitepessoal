@@ -10,8 +10,8 @@ import { useState, useCallback, useEffect, useRef } from 'react';
 
 export default function Home() {
   var [select, setSelect] = useState("fadein2");
-  var refGallery = useRef(0);
-  var refModalCut = useRef(0);
+  var refGallery = useRef(null);
+  var refModalCut = useRef(null);
 
   function changeAnimation(e){
     setSelect(e.target.value);
@@ -21,20 +21,26 @@ export default function Home() {
     let file = e.target;
     //console.log(file);
 
-    refModalCut.current.addPhotoToCut(file);
-    refModalCut.current.open();
+    if (refModalCut.current !== null) {
+      refModalCut.current.addPhotoToCut(file);
+      refModalCut.current.open();
+    }
   }
 
   function submitGallery(e){
     e.preventDefault();
 
     let file = e.target.querySelector("#fieldFile");
-
-    refGallery.current.addPhoto(file);
+    
+    if (refGallery.current !== null) {
+      refGallery.current.addPhoto(file);
+    }
   }
 
   function clickOpenModal(){
-    refModalCut.current.open();
+    if (refModalCut.current !== null) {
+      refModalCut.current.open();
+    }
   }
 
   return (
