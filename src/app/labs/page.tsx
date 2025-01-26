@@ -3,12 +3,7 @@
 import Image from "next/image";
 import "./page.css";
 
-import { useState, useCallback, useEffect } from 'react';
 import { useRef } from 'react';
-
-import FormCommon from "./FormCommon";
-import TableCommon from "./TableCommon";
-import Pagination from "./Pagination";
 
 
 export default function Home() {
