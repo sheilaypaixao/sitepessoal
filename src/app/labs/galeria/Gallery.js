@@ -68,10 +68,10 @@ export default function Gallery({ref, animation}) {
 			img.onload = function(e){
 				if(w/h > this.width/this.height){
 					//ajustar pela altura
-					console.log(this.height);
+					//console.log(this.height);
 					 resolve("ajust-w");
 				}else{
-					console.log(this.width);
+					//console.log(this.width);
 					//ajustar pela largura
 					resolve("ajust-h");
 				}

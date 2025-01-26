@@ -12,7 +12,7 @@ export default function Modal({ref, children, callbackClose}) {
 		body.scrollTop = 0;
 		if(bg) bg.setAttribute("style","height:"+h+"px");
 
-		console.log(bg, h);
+		//console.log(bg, h);
 
 	}, [visible]);
 
