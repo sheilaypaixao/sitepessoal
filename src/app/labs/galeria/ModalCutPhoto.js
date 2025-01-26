@@ -6,6 +6,7 @@ import { createPortal } from 'react-dom';
 export default function ModalCutPhoto({ref}) {
 	var refModal = useRef();
 	var refZoneDrag = useRef();
+	var refDrag = useRef();
 	var [imgCurrent, setImgCurrent] = useState({url:"photo_padrao.gif"});
 	var [visible, setVisible] = useState(false);
 	var [position, setPosition] = useState({x:0,y:0});
@@ -66,10 +67,8 @@ export default function ModalCutPhoto({ref}) {
 			img.onload = function(e){
 				if(w/h > this.width/this.height){
 					//ajustar pela altura
-					console.log(this.height);
 					 resolve("ajust-w");
 				}else{
-					console.log(this.width);
 					//ajustar pela largura
 					resolve("ajust-h");
 				}
@@ -82,14 +81,13 @@ export default function ModalCutPhoto({ref}) {
 	function dragStart(e){
 		let coordDrag = e.target.getBoundingClientRect();
 
-		window.dif = e.clientY - coordDrag.y;
-		console.log(dif, "start");
+		window.difY = e.clientY - coordDrag.y;
+		window.difX = e.clientX - coordDrag.x;
 	}
 
 	function drag(e){
 		let coord = getPositions(e.target, e);
-		//console.log(coord);
-
+		
 		setPosition({
           x: coord.x,
           y: coord.y
@@ -97,19 +95,29 @@ export default function ModalCutPhoto({ref}) {
 	}
 
 	function dragEnd(e){
-		//console.log("tesete");
-		
 		let coord = getPositions(e.target, e);
 
 		setPosition({
           x: coord.x,
           y: coord.y
         });
+
+		setDimensionsCut();
 	}
 
 	function dropHandler(e){
-		console.log("drop");
-		e.dataTransfer.dropEffect = "none";
+		e.dataTransfer.dropEffect = "move";
+	}
+
+	function setDimensionsCut(){
+		let coordDrag = refDrag.current.getBoundingClientRect();
+		var coordZone = refZoneDrag.current.getBoundingClientRect();
+
+		window.imgCut = {...imgCurrent, top: coordZone.top - coordDrag.top, left: coordZone.left - coordDrag.left};
+	}
+
+	function getDimensionsCut(){
+		return window.imgCut;
 	}
 
 	function getPositions(drag, e){
@@ -120,22 +128,22 @@ export default function ModalCutPhoto({ref}) {
 
 		//console.log(zoneDrag);
 		
-		if(e.clientY - dif < coordZone.top){
+		if(e.clientY - difY < coordZone.top){
 			coordFinal.y= coordZone.top;
-			console.log("topo", coordFinal.y);
-		}else if((e.clientY - dif) + coordDrag.height > coordZone.bottom){
+		}else if((e.clientY - difY) + coordDrag.height > coordZone.bottom){
 			coordFinal.y= coordZone.bottom - coordDrag.height;
 		}else{
-			coordFinal.y= e.clientY - window.dif;
+			coordFinal.y= e.clientY - window.difY;
 		}
-		if(e.clientX < coordZone.left){
+
+		if(e.clientX - difX < coordZone.left){
 			coordFinal.x = coordZone.left;
-		}else if(e.clientX + coordDrag.width > coordZone.right ){
+		}else if((e.clientX - difX) + coordDrag.width > coordZone.right ){
 			coordFinal.x = coordZone.right - coordDrag.width;
 		}else{
-			coordFinal.x = e.clientX;
+			coordFinal.x = e.clientX - window.difX;
 		}
-		console.log("final", coordFinal);
+
 		return coordFinal;
 	}
 
@@ -143,9 +151,15 @@ export default function ModalCutPhoto({ref}) {
 		return false;
 	}
 
+	function onClickCut(e){
+		setDimensionsCut();
+		refModal.current.close(e);
+	}
+
 	useImperativeHandle(ref, (file) => { return {
 	    	open: open,
-	    	addPhotoToCut: addPhotoToCut.bind(file)
+	    	addPhotoToCut: addPhotoToCut.bind(file),
+	    	getDimensionsCut: getDimensionsCut
 	};}, []);
 
 	return(
@@ -155,8 +169,9 @@ export default function ModalCutPhoto({ref}) {
           	<div ref={refZoneDrag} className="modal-cut">
           		<img src={imgCurrent.url} className={imgCurrent.classN} />
           	</div>
+          	<button type="button" onClick={onClickCut}>Cortar</button>
         </Modal>
-        {visible && createPortal(<div onDrop={dropHandler} style={{transform: `translate(${position.x}px, ${position.y}px)` }} draggable="true" className="frame-cut" onDrag={drag} onDragStart={dragStart} onDragEnd={dragEnd}></div>, document.body)}
+        {visible && createPortal(<div ref={refDrag} onDrop={dropHandler} style={{transform: `translate(${position.x}px, ${position.y}px)` }} draggable="true" className="frame-cut" onDrag={drag} onDragStart={dragStart} onDragEnd={dragEnd}></div>, document.body)}
         </>
 
 	);

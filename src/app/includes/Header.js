@@ -5,11 +5,9 @@ export default function Header({}) {
   <header>
           <h1>Labs</h1>
           <ul>
-            <li><a href="#" title="Home">Home</a></li>
-            <li><a href="#" title="Home">Home</a></li>
-            <li><a href="#" title="Home">Home</a></li>
-            <li><a href="#" title="Home">Home</a></li>
-            <li><a href="#" title="Home">Home</a></li>
+            <li className="menu"><a href="#" title="Menu">Menu</a></li>
+            <li><a href="/" title="Home">Home</a></li>
+            <li><a href="/labs" title="Home">Estudos de Javascript</a></li>
           </ul>
         </header>
   );

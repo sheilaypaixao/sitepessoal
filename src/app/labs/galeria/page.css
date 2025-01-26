@@ -1,0 +1,209 @@
+
+.col-fluid2 .col-fluid-inner{
+  width: 100%;
+  padding: 0 20px;
+  max-width: 523px;
+  margin: 0 auto;
+}
+
+
+/*******************/
+/***** Galeria *****/
+/*******************/
+
+
+.photo-molde-wrap{
+  width: 523px;
+  height: 380px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.photo-molde{
+  background-image:url("/img/quadro.png");
+  width: 523px;
+  height: 380px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 4;
+}
+.photo-molde-wrap .btn-next{
+  background-image:url("/img/arrow-r.png");
+  float: right;
+  position: absolute;
+  right: 200px;
+  bottom: 15px;
+  z-index: 5;
+  width: 38px;
+  height: 18px;
+  text-indent: -5000px;
+}
+.photo-molde-wrap .btn-prev{
+  background-image:url("/img/arrow-l.png");
+  float: left;
+  z-index: 5;
+  position: absolute;
+  left: 200px;
+  bottom: 14px;
+  width: 38px;
+  height: 20px;
+  text-indent: -5000px;
+}
+.photo-molde-wrap img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.photo-molde-wrap img.ajust-h{
+  height: 100%;
+  max-height: 312px;
+}
+.photo-molde-wrap img.ajust-w{
+  width: 100%;
+  max-width: 454px;
+}
+
+.photo-molde-wrap .photo-overflow {
+  overflow: hidden;
+  width: 454px;
+  height: 312px;
+  position: absolute;
+  top:32px;
+  left: 36px;
+  z-index: 1;
+}
+
+
+@keyframes slide-left-right1 {
+  from {left: -454px;}
+  to {left: 36px;}
+}
+@keyframes slide-left-right2 {
+  from {left: 36px;}
+  to {left: 490px;}
+}
+@keyframes slide-right-left1 {
+  from {left: 490px;}
+  to {left: 36px;}
+}
+@keyframes slide-right-left2 {
+  from {left: 36px;}
+  to {left: -454px;}
+}
+@keyframes slip-top-bottom1 {
+  from {top: -307px}
+  to {top: 32px;}
+}
+@keyframes slip-top-bottom2 {
+  from {top: 32px;}
+  to {top: 339px;}
+}
+@keyframes slip-bottom-top1 {
+  from {top: 339px;}
+  to {top: 32px;}
+}
+@keyframes slip-bottom-top2 {
+  from {top: 32px;}
+  to {top: -307px;}
+}
+@keyframes fadein {
+  from {opacity: 1;}
+  to {opacity: 0}
+}
+
+
+.photo-molde-wrap.fadein2 .current{
+  z-index: 1;
+}
+.photo-molde-wrap.fadein2 .last-img{
+  opacity: 0;
+}
+.photo-molde-wrap.fadein2 .last-img.is-animate{
+  animation: fadein 1s ease-in-out;
+}
+
+.photo-molde-wrap .current{
+  z-index: 2;
+}
+.photo-molde-wrap.slide-lr1 .current.is-animate{
+  animation: slide-left-right1 1s ease-in-out;
+}
+.photo-molde-wrap.slide-lr2 .last-img.is-animate{
+  animation: slide-left-right2 1s ease-in-out;
+  z-index: 3;
+  left: 490px;
+}
+.photo-molde-wrap.slide-rl1 .current.is-animate{
+  animation: slide-right-left1 1s ease-in-out;
+}
+.photo-molde-wrap.slide-rl2 .last-img.is-animate{
+  animation: slide-right-left2 1s ease-in-out;
+  z-index: 3;
+  left: -454px;
+}
+.photo-molde-wrap.slide-tb1 .current.is-animate{
+  animation: slip-top-bottom1 1s ease-in-out;
+}
+.photo-molde-wrap.slide-tb2 .last-img.is-animate{
+  animation: slip-top-bottom2 1s ease-in-out;
+  z-index: 3;
+  top: -307px;
+}
+.photo-molde-wrap.slide-bt1 .current.is-animate{
+  animation: slip-bottom-top1 1s ease-in-out;
+}
+.photo-molde-wrap.slide-bt2 .last-img.is-animate{
+  animation: slip-bottom-top2 1s ease-in-out;
+  z-index: 3;
+  top: -307px;
+}
+
+
+/*******************/
+/***** Modal *****/
+/*******************/
+
+.modal .modal-cut{
+  position: relative;
+}
+
+.frame-cut{
+  position: absolute;
+  width: 454px;
+  height: 312px;
+  border: 2px dashed #ccc;
+  z-index: 1002;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+
+.modal img.ajust-h{
+  height: 100%;
+  max-height: 312px;
+  min-height: 312px;
+}
+.modal img.ajust-w{
+  width: 100%;
+  max-width: 454px;
+}
+
+
+@media screen and (min-width: 1024px) {
+
+.col-fluid2 .col-fluid-inner{
+  float: left;
+}
+
+.col-fluid2{
+  padding-right:560px; /* o right, é a soma do width da coluna com o padding desejado */
+}
+
+.photo-molde-wrap{
+  float: right;
+}
+
+}

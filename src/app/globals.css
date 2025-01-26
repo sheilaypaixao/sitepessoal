@@ -40,9 +40,13 @@ a {
   }
 }
 
+/*******************/
+/***** Header *****/
+/*******************/
+
 body > header{
   background: #d9c5ab;
-  height: 64px;
+  min-height: 64px;
   width: 100%;
   padding: 0 10px;
   color:#fff;
@@ -51,24 +55,22 @@ body > header{
 }
 body > header h1{
   float: left;
+  padding: 15px;
 }
 
-body > header ul{
-  float: right;
+body > header ul a{
+  color: #3c3a36;
 }
 
-body > header ul li{
-  float: left;
-  padding: 25px;
-  list-style: none;
-}
 
-body > header ul li a{
-  padding: 10px;
-  color: #000;
-  font-weight: bold;
+h2 {
+  padding: 50px 0 10px;
+  font-size: 25px;
+  color: #685f57;
 }
-
+h3 {
+  padding: 10px 0;
+}
 
 .content {
   max-width: 1200px;
@@ -79,37 +81,10 @@ body > header ul li a{
   border-top: 3px solid #d2d6de;
   background: #fff;
   padding:10px;
-  margin:20px 0px 20px 20px;
   width: 100%;
   float: left;
 }
 
-
-.col-fix{
-  float: left;
-  width: 300px;
-}
-
-.col-fluid{
-  padding-right:360px; /* o right, é a soma do width da coluna com o padding desejado */
-}
-.col-fluid2{
-  padding-right:560px; /* o right, é a soma do width da coluna com o padding desejado */
-}
-
-.col-fluid2 .col-fluid-inner{
-  float: left;
-  width: 100%;
-}
-
-form fieldset{
-  border: 0px;
-}
-form label{
-  display: block;
-  font-weight: bold;
-  padding: 10px 0 5px;
-}
 
 /*******************/
 /***** Modal *****/
@@ -148,164 +123,12 @@ form label{
   font-size: 20px;
   font-weight: bold;
 }
-.modal .modal-cut{
-  position: relative;
-}
 
-.frame-cut{
-  position: absolute;
-  width: 454px;
-  height: 308px;
-  border: 2px dashed #ccc;
-  z-index: 1002;
-  top: 0;
-  left: 0;
-  cursor: pointer;
-}
 
-.modal img{
-  
-}
-.modal img.ajust-h{
-  height: 100%;
-  max-height: 308px;
-}
-.modal img.ajust-w{
-  width: 100%;
-  max-width: 454px;
-}
 
 /*******************/
-/***** Galeria *****/
+/***** Tabelas *****/
 /*******************/
-
-
-.photo-molde-wrap{
-  width: 523px;
-  height: 380px;
-  float: right;
-  position: relative;
-  overflow: hidden;
-}
-.photo-molde{
-  background-image:url("/img/quadro.png");
-  width: 523px;
-  height: 380px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 4;
-}
-.photo-molde-wrap .btn-next{
-  float: right;
-  position: absolute;
-  right: 0;
-  z-index: 5;
-}
-.photo-molde-wrap .btn-prev{
-  float: left;
-  z-index: 5;
-  position: absolute;
-  left: 0;
-}
-.photo-molde-wrap img{
-  position: absolute;
-  top:32px;
-  left: 36px;
-  z-index: 1;
-}
-.photo-molde-wrap img.ajust-h{
-  height: 100%;
-  max-height: 308px;
-}
-.photo-molde-wrap img.ajust-w{
-  width: 100%;
-  max-width: 454px;
-}
-
-@keyframes slide-left-right1 {
-  from {left: -454px;}
-  to {left: 36px;}
-}
-@keyframes slide-left-right2 {
-  from {left: 36px;}
-  to {left: 490px;}
-}
-@keyframes slide-right-left1 {
-  from {left: 490px;}
-  to {left: 36px;}
-}
-@keyframes slide-right-left2 {
-  from {left: 36px;}
-  to {left: -454px;}
-}
-@keyframes slip-top-bottom1 {
-  from {top: -307px}
-  to {top: 32px;}
-}
-@keyframes slip-top-bottom2 {
-  from {top: 32px;}
-  to {top: 339px;}
-}
-@keyframes slip-bottom-top1 {
-  from {top: 339px;}
-  to {top: 32px;}
-}
-@keyframes slip-bottom-top2 {
-  from {top: 32px;}
-  to {top: -307px;}
-}
-@keyframes fadein {
-  from {opacity: 1;}
-  to {opacity: 0}
-}
-
-
-.photo-molde-wrap.fadein2 img.current{
-  z-index: 1;
-}
-.photo-molde-wrap.fadein2 img.last-img{
-  opacity: 0;
-}
-.photo-molde-wrap.fadein2 img.last-img.is-animate{
-  animation: fadein 1s ease-in-out;
-}
-
-.photo-molde-wrap img.current{
-  z-index: 2;
-}
-.photo-molde-wrap.slide-lr1 img.current.is-animate{
-  animation: slide-left-right1 1s ease-in-out;
-}
-.photo-molde-wrap.slide-lr2 img.last-img.is-animate{
-  animation: slide-left-right2 1s ease-in-out;
-  z-index: 3;
-  left: 490px;
-}
-.photo-molde-wrap.slide-rl1 img.current.is-animate{
-  animation: slide-right-left1 1s ease-in-out;
-}
-.photo-molde-wrap.slide-rl2 img.last-img.is-animate{
-  animation: slide-right-left2 1s ease-in-out;
-  z-index: 3;
-  left: -454px;
-}
-.photo-molde-wrap.slide-tb1 img.current.is-animate{
-  animation: slip-top-bottom1 1s ease-in-out;
-}
-.photo-molde-wrap.slide-tb2 img.last-img.is-animate{
-  animation: slip-top-bottom2 1s ease-in-out;
-  z-index: 3;
-  top: -307px;
-}
-.photo-molde-wrap.slide-bt1 img.current.is-animate{
-  animation: slip-bottom-top1 1s ease-in-out;
-}
-.photo-molde-wrap.slide-bt2 img.last-img.is-animate{
-  animation: slip-bottom-top2 1s ease-in-out;
-  z-index: 3;
-  top: -307px;
-}
 
 table{
   border-spacing: 0px;
@@ -316,49 +139,160 @@ table th,table td {
   text-align: left;
 }
 
-.form-user label{
+/*******************/
+/***** Forms *****/
+/*******************/
+
+form label, .form-user label{
   padding: 5px 0 5px;
 }
 
-.form-user h4{
+form h4, .form-user h4{
   padding: 0 0 5px;
 }
 
-.form-user fieldset{
-  border: 0px;
-}
-
-.form-user .text input {
+select, form .text input, .form-user .text input {
   width: 100%;
   height: 36px;
   border:1px solid #ccc;
   padding: 10px;
 }
 
-.form-user .text label {
+form .file input {
+  font-size: 14px;
+}
+
+form .text label, form .file label, .form-user .text label {
   display: block;
   font-weight: bold;
 }
 
-.form-user fieldset {
-  padding-top: 20px;
+fieldset, form fieldset, .form-user fieldset {
+  padding: 10px 0;
+  border: 0px;
 }
 
-.form-user .radio label {
-
-}
-.form-user .radio input {
+form .radio input, .form-user .radio input {
   margin: 10px 5px 5px 0;
 }
 
-.form-user button {
+button {
   background: #00a65a;
   border:1px solid #008d4c;
+  border-radius: 5px;
   color: #fff;
+  padding: 5px;
+  margin-right: 5px;
+}
+
+form button, .form-user button {
   padding: 10px;
   margin-top:20px;
 }
 
-.pagination .current {
+/*******************/
+/***** Medias *****/
+/*******************/
+
+@media screen and (max-width: 480px) {
+
+body {
+  /* border-top: 10px solid red; */
+}
+
+body > header ul .menu a{
+  width: 50px;
+  height: 35px;
+  background: #fff;
+  border-radius: 10px;
+  position: absolute;
+  top:-47px;
+  right: 0px;
+}
+body > header ul .menu{
+  display: block;
+}
+
+body > header ul{
+  position: relative;
+  clear: both;
+}
+
+body > header li{
+  display: none;
+  width: 100%;
+}
+body > header li a{
+  padding: 10px;
+  display: block;
+  border-top: 1px solid #fff;
+}
+body > header ul:hover li{
+  display: block;
+}
+
+
+}
+
+@media screen and (min-width: 481px) {
+
+body {
+  /* border-top: 10px solid blue; */
+}
+
+
+body > header ul .menu{
+  display: none;
+}
+
+body > header ul{
+  float: right;
+}
+
+body > header ul li{
+  float: left;
+  padding: 25px 10px;
+  list-style: none;
+}
+
+body > header ul li a{
+  padding: 10px 1em;
+  color: #000;
   font-weight: bold;
+}
+
+
+.col-fix{
+  width: 300px;
+  margin: 0 auto;
+  float: none;
+}
+
+
+}
+
+@media screen and (max-width: 768px) {
+
+}
+
+
+@media screen and (min-width: 768px) {
+
+
+body {
+/*  border-top: 10px solid black; */
+}
+
+.col-fix{
+  float: left;
+}
+
+.col-fluid{
+  padding-right:360px; /* o right, é a soma do width da coluna com o padding desejado */
+}
+
+.box {
+  margin:20px 0px 20px 20px;
+}
+
 }

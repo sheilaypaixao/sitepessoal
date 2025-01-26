@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import { useState, useEffect, useImperativeHandle } from 'react';
 
 export default function Gallery({ref, animation}) {
-	var [lstPhotos, setLstPhotos] = useState([{url:"/img/galeria1.jpg", classN: "ajust-h"},{url:"/img/galeria2.png", classN: "ajust-h"},{url:"/img/galeria3.jpg", classN: "ajust-h"},{url:"/img/galeria4.jpg", classN: "ajust-h"}]);
+	var [lstPhotos, setLstPhotos] = useState([{url:"/img/galeria1.jpg", classN: "ajust-h", top:0, left:0},{url:"/img/galeria2.png", classN: "ajust-h", top:0, left:0},{url:"/img/galeria3.jpg", classN: "ajust-h", top:0, left:0},{url:"/img/galeria4.jpg", classN: "ajust-h", top:0, left:0}]);
 	var [currentPhoto, setCurrentPhoto] = useState(0);
 	var [dir, setDir] = useState("init");
 	const refLast = useRef(0);
@@ -26,7 +26,9 @@ export default function Gallery({ref, animation}) {
 
 	useImperativeHandle(ref, () => {
 	    return {
-			addPhoto(file){
+	    	goToLastPhoto: goToLastPhoto,
+	    	addPhoto: addPhoto,
+			addPhoto2(file){
 				if(file && file.type && file.type == "file"){
 					const reader = new FileReader();
 					reader.addEventListener("load", () => {
@@ -46,9 +48,18 @@ export default function Gallery({ref, animation}) {
 		};
 	}, [{}]);
 
+	function goToLastPhoto(){
+		
+	}
+
+	function addPhoto(imgConfig){
+		setLstPhotos([...lstPhotos, imgConfig]);
+		setCurrentPhoto(lstPhotos.length);
+	}
+
 	function getDimensions(url){
 		var w = 454;
-		var h = 308;
+		var h = 312;
 		let img = new Image();
 		img.src = url;
 
@@ -89,14 +100,14 @@ export default function Gallery({ref, animation}) {
 	function getImgLast(){
 		let photo = (dir=="next")? currentPhoto-1:currentPhoto+1;
 
-		return <img ref={refLast} className={"last-img " + lstPhotos[photo].classN} src={lstPhotos[photo].url} />;
+		return <div ref={refLast} className="photo-overflow last-img"><img style={{top: `${lstPhotos[photo].top}px`, left: `${lstPhotos[photo].left}px` }} className={lstPhotos[photo].classN} src={lstPhotos[photo].url} /></div>;
 	}
 
 	return(
 		<div className={"photo-molde-wrap " + animation}>
         	{currentPhoto!=0 && <a href="#" title="Prev" className="btn-prev" onClick={prevPhoto}> Prev </a>}
         	<div className="photo-molde"></div>
-        	<img className={"current " + lstPhotos[currentPhoto].classN} ref={refCurrent} src={lstPhotos[currentPhoto].url} />
+        	<div ref={refCurrent} className="photo-overflow current"><img style={{top: `${lstPhotos[currentPhoto].top}px`, left: `${lstPhotos[currentPhoto].left}px` }} className={lstPhotos[currentPhoto].classN} src={lstPhotos[currentPhoto].url} /></div>
         	{dir!="init" && getImgLast()}
         	{(lstPhotos.length-1)!=currentPhoto && <a href="#" title="Next" className="btn-next" onClick={nextPhoto}> Next </a>}
       	</div>

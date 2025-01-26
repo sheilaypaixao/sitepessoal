@@ -4,9 +4,23 @@ import { useState, useEffect, useImperativeHandle } from 'react';
 export default function Modal({ref, children, callbackClose}) {
 	var [visible, setVisible] = useState(false);
 
+	useEffect(()=>{
+		let body = document.querySelector("html");
+		let h = body.getBoundingClientRect().height;
+		let bg = document.querySelector(".modal-bg");
+
+		body.scrollTop = 0;
+		if(bg) bg.setAttribute("style","height:"+h+"px");
+
+		console.log(bg, h);
+
+	}, [visible]);
+
 	function open() {
-		setVisible(true);
+		
 		document.querySelector("body").setAttribute("style","overflow-y:hidden");
+
+		setVisible(true);
 	}
 
 	function close(e) {
@@ -18,10 +32,10 @@ export default function Modal({ref, children, callbackClose}) {
 	    callbackClose();
 	}
 
-	useImperativeHandle(ref, () => {
+	useImperativeHandle(ref, (e) => {
 		return{
-	    	open,
-	    	close
+	    	open: open,
+	    	close: close.bind(e)
 	};
 	}, [visible]);
 

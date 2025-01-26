@@ -22,7 +22,6 @@ export default function TableCommon({lstUserTable, lstUser, setLstUser, setEdit,
 
     lstUserTable.map((user, index) => {
       users.push(<tr key={index}>
-                  <td>{user.photo}</td>
                   <td>{user.name}</td>
                   <td>{user.email}</td>
                   <td>{user.admin? "Sim" : "Não"}</td>
@@ -47,7 +46,6 @@ export default function TableCommon({lstUserTable, lstUser, setLstUser, setEdit,
       <table>
         <thead>
           <tr>
-            <th className="col-photo">Foto</th>
             <th className="col-name">Nome</th>
             <th className="col-email">E-mail</th>
             <th className="col-admin">Admin</th>
