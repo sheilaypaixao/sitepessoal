@@ -18,22 +18,26 @@ export default function TableCommon({lstUserTable, lstUser, setLstUser, setEdit,
   }
 
   function lstUserRender(){
+    //console.log("lst", lst);
+
     let users = [];
 
     lstUserTable.map((user, index) => {
-      users.push(<tr key={index}>
+      users.push(<tr className={(index%2==0)?"odd": "even"} key={index}>
                   <td>{user.name}</td>
                   <td>{user.email}</td>
                   <td>{user.admin? "Sim" : "Não"}</td>
                   <td>{user.gender}</td>
-                  <td>
+                  {setEdit && <td>
+                    
                     <button type="button" onClick={() => {
                       handleEdit(user);
                     }} className="btn">Editar</button>
+
                     <button type="button" onClick={() => {
                       handleDelete(user);
                     }} className="btn">Excluir</button>
-                  </td>
+                  </td>}
                 </tr>);
     });
 
@@ -50,7 +54,7 @@ export default function TableCommon({lstUserTable, lstUser, setLstUser, setEdit,
             <th className="col-email">E-mail</th>
             <th className="col-admin">Admin</th>
             <th className="col-register">Gênero</th>
-            <th className="col-action">Ações</th>
+            {setEdit && <th className="col-action">Ações</th>}
           </tr>
         </thead>
         <tbody>

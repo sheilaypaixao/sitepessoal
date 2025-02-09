@@ -21,6 +21,7 @@ export default function Home() {
               <ul className="lst-box">
                 <li><a href="/labs/forms">Formulários em React</a></li>
                 <li><a href="/labs/galeria">Galeria em React</a></li>
+                <li><a href="/labs/pagination">Paginação</a></li>
               </ul>
             
           </div>

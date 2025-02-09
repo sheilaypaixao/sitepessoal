@@ -25,15 +25,14 @@ function Pagination({ref, lstUser, numberPages, numberItens, currentPage, setCur
 	}
 
 	function getList(){
-		return {teste: false};
+		return {list: false};
 	}
 
-	useImperativeHandle(ref, () => {
+	useImperativeHandle(ref, (page) => {
 	    return {
-	    	getList: getList,
+	    	getList:getList,
+	    	goToPage: goToPage.bind(page),
 	      	goToLastPage(totalItens){
-	      		//console.log("npaginas",totalPages, lstUser.length%numberItens==0, lstUser.length);
-	      		//getTotalPages(lstUser.length + 1);
 				goToPage(getTotalPages(totalItens));
 			}
 		};
@@ -41,9 +40,17 @@ function Pagination({ref, lstUser, numberPages, numberItens, currentPage, setCur
 
 	function lstPages(){
 		let halfNumberPages = parseInt(numberPages/2);
-		let initial = (currentPage - halfNumberPages < 1 ) ? 1 : currentPage - halfNumberPages;
+		let initial = currentPage - halfNumberPages;
+		initial = ( initial < 1 ) ? 1 : initial;
 		let final = initial + parseInt(numberPages) - 1;
-		final = (final > totalPages) ? totalPages : final;
+
+		if(final > totalPages){
+			final = totalPages;
+			//console.log("initital", initial);
+			let newInitial = final - numberPages + 1;
+			initial = (initial == 1 || newInitial < 1)? 1 : newInitial;
+		}
+
 		
 		let pages = [];
 
@@ -57,7 +64,7 @@ function Pagination({ref, lstUser, numberPages, numberItens, currentPage, setCur
                   }} className={(i == currentPage)?"current":""}> {i} </a></li>);
 		}
 
-		if(currentPage != final){
+		if(currentPage != totalPages){
 			pages.push(<li key={final+1}><a href="#" onClick={(e) => {handleClickPag(parseInt(currentPage) + 1 , e)}}> proximo </a></li>);
 		}
 		return pages;
