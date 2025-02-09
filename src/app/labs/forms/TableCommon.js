@@ -64,3 +64,12 @@ export default function TableCommon({lstUserTable, lstUser, setLstUser, setEdit,
     </>
   );
 }
+
+TableCommon.defaultProps = {
+  lstUserTable: [],
+  lstUser: [],
+  setLstUser: '',
+  setEdit: '',
+  setRadio: '',
+  setIsEdit: ''
+}

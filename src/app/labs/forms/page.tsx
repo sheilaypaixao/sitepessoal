@@ -79,7 +79,7 @@ export default function Home() {
             <div className="box">
             <PaginationBlock ref={refPagBlock} lstUser={lstUser} numberPages="5" numberItens="5">
               
-              <TableCommon />
+              <TableCommon setLstUser={setLstUser} setEdit={setEdit} setRadio={setRadio} setIsEdit={setIsEdit} />
               
             </PaginationBlock>
 
