@@ -28,9 +28,10 @@ function Pagination({ref, lstUser, numberPages, numberItens, currentPage, setCur
 		return {teste: false};
 	}
 
-	useImperativeHandle(ref, () => {
+	useImperativeHandle(ref, (page) => {
 	    return {
 	    	getList: getList,
+	    	goToPage: goToPage.bind(page),
 	      	goToLastPage(totalItens){
 	      		//console.log("npaginas",totalPages, lstUser.length%numberItens==0, lstUser.length);
 	      		//getTotalPages(lstUser.length + 1);

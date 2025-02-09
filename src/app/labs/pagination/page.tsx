@@ -54,11 +54,13 @@ export default function Home() {
   	function changeNumberItens(e){
   		let val = e.target.value;
   		setNumberItens(val);
+        refPagBlock.current!.goToPage(1);
   	}
 
   	function changeNumberPages(e){
   		let val = e.target.value;
   		setNumberPages(val);
+        refPagBlock.current!.goToPage(1);
   	}
 
 	return(

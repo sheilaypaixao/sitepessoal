@@ -25,13 +25,17 @@ function lstUserTable(){
     return lst;
   }
 
+  function goToPage(page){
+    refPagination.current.goToPage(page);
+  }
   function goToLastPage(totalItens){
   	refPagination.current.goToLastPage(totalItens);
   }
 
-  useImperativeHandle(ref, (totalItens) =>{
+  useImperativeHandle(ref, (totalItens, page) =>{
   	return{
-  		goToLastPage: goToLastPage.bind(totalItens)
+  		goToLastPage: goToLastPage.bind(totalItens),
+      goToPage: goToPage.bind(page)
   	}
   })
 
