@@ -40,7 +40,7 @@ return(
 
 		{cloneElement(children, {
           lstUserTable: lstUserTable(),
-          lstUser: lstUser
+          lstUser: lstUser,
         })}
 
 	        <Pagination ref={refPagination} lstUser={lstUser} numberPages={numberPages} numberItens={numberItens} currentPage={currentPage} setCurrentPage={setCurrentPage} />

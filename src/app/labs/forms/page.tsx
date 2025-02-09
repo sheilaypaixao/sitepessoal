@@ -50,7 +50,7 @@ export default function Home() {
                 {id: 35,name:"Name teste 7", email: "eee@email.com", admin: true, gender: "F"},
                 {id: 36,name:"Name teste 8", email: "eee@email.com", admin: true, gender: "F"},
                 {id: 37,name:"Name teste 8", email: "eee@email.com", admin: true, gender: "F"}]);
-  let [edit, setEdit] = useState({name:"", email:"", admin:false});
+  let [edit, setEdit] = useState({name:"", email:"", admin: false});
   let [radio, setRadio] = useState({gender:""});
   let [isEdit, setIsEdit] = useState(false);
   //let [currentPage, setCurrentPage] = useState(1);
@@ -58,7 +58,7 @@ export default function Home() {
   //var numberPages = 5;
 
   useEffect(() => {
-    console.log("effect", isEdit);
+    //console.log("effect", isEdit);
 
     if(!isEdit){
       //callbackSubmit();
@@ -79,7 +79,7 @@ export default function Home() {
             <div className="box">
             <PaginationBlock ref={refPagBlock} lstUser={lstUser} numberPages="5" numberItens="5">
               
-              <TableCommon setLstUser={setLstUser} setEdit={setEdit} setRadio={setRadio} setIsEdit={setIsEdit} />
+              <TableCommon />
               
             </PaginationBlock>
 
