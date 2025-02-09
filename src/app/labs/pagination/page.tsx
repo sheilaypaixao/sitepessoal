@@ -47,7 +47,7 @@ export default function Home() {
                 {id: 36,name:"Name teste 8", email: "eee@email.com", admin: true, gender: "F"},
                 {id: 37,name:"Name teste 8", email: "eee@email.com", admin: true, gender: "F"}]);
   	
-  	var refPagBlock = useRef();
+  	var refPagBlock = useRef<any>(null);
   	var [numberItens, setNumberItens] = useState(5);
   	var [numberPages, setNumberPages] = useState(5);
 
