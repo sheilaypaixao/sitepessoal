@@ -5,7 +5,7 @@ export default function MenuStudyJS(){
 
 	return(
     <>
-		<h2>Estudos de Javascript</h2>
+		<h2>Estudos de Javascript em React</h2>
 
           <ul className="lst-box">
             <li><a href="/labs/forms">Formulários em React</a></li>
