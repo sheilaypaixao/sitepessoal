@@ -7,29 +7,26 @@ import Tab from "./Tab";
 import Accordion from "./Accordion";
 
 export default function Home() {
-	const data = [{label:"Tab1", content: "Teste teste"},
-					{label:"Tab1", content: "<h3>Título</h3>Teste teste2"},
-					{label:"Tab3", content: "Teste teste3"},
-					{label:"Tab4", content: "Teste teste4"}];
+	const data = [{label:"Pré-História", content: "<ul><li>Período anterior à invenção da escrita. </li><li>Dividida em Paleolítico (caça, pesca, nomadismo), Neolítico (agricultura, sedentarização) e Idade dos Metais (metalurgia e primeiras cidades).</li></ul>"},
+					{label:"Idade Antiga", content: "<ul><li>Início com a invenção da escrita. </li><li>Grandes civilizações: Egípcios, Mesopotâmios, Gregos, Romanos. </li><li>Expansão da cultura, política e religião.</li></ul>"},
+					{label:"Idade Média", content: "<ul><li>Começa com a queda do Império Romano do Ocidente. </li><li>Feudalismo, poder da Igreja Católica, Cruzadas. </li><li>Fim marcado pela queda de Constantinopla (1453) ou chegada de Colombo à América (1492).</li></ul>"}];
 	
 	var [lstData, setLstData] = useState(data);
 	var refTab = useRef(null);
-	var [type, setType] = useState("A");
+	var [type, setType] = useState("T");
 
 	function handleSubmit(e){
 		e.preventDefault();
 
 		let el = e.target;
-		let label = el.querySelector("#label").value;
-		let content = el.querySelector("#content").value;
+		let label = el.querySelector("#label");
+		let content = el.querySelector("#content");
 
-		setLstData([...lstData, {label: label, content: content}]);
+		setLstData([...lstData, {label: label.value, content: content.value}]);
 
-		console.log(lstData);
+		label.value = "";
+		content.value = "";
 
-		//console.log(el,label, content);
-
-		//refTab.current!.addTab({label: label, content: content});
 	}
 
 	return(

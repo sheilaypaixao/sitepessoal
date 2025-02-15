@@ -6,18 +6,19 @@ function ItemAccordion({data}){
 
 	function handleToggleVisible(e){
 		e.preventDefault();
+		
 		setIsVisible(!isVisible);
 	}
 
-	function isActive(){
-		return isVisible?"active":"";
+	function isActiveClass(){
+		return isVisible? "active" : "";
 	}
 	function createMarkup(html) {
 		return {__html: html};
 	}
 
 	return(
-		<section className={"accordion-section " + isActive()}>
+		<section className={"accordion-section " + isActiveClass()}>
 			<h3><a href="#" onClick={handleToggleVisible}>{data.label}</a></h3>
 			{ isVisible && 
 				<div className="accordion-content"  dangerouslySetInnerHTML={createMarkup(data.content)} />
@@ -28,24 +29,6 @@ function ItemAccordion({data}){
 
 export default function Accordion({ref, data}){
 
-	function createMarkup(html) {
-	  return {__html: html};
-	}
-
-	function lstAccordion(){
-		let render = [];
-		console.log(data);
-
-		data.map((item, index) => {
-			render.push(<section key={index} className="accordion-section">
-				<h3><a href="#">{item.label}</a></h3>
-				<div className="accordion-content"  dangerouslySetInnerHTML={createMarkup(item.content)} />
-				</section>);
-		});
-
-		return render;
-	}
-
 	return(
 		<div className="accordion">
 
@@ -54,8 +37,6 @@ export default function Accordion({ref, data}){
 			)) }
 		
 		</div>
-
-
 	);
 }
 
