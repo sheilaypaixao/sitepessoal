@@ -31,9 +31,8 @@ export default function FormCommon({callbackSubmit, lstUser, setLstUser, edit, s
     }else{
       setLstUser([...lstUser, getValues(form)]);
       //console.log(lstUser.length, "logo depois");
-      //useEffect(() => {
+      
       callbackSubmit();
-      //})
     }
     
     handleCancel(e);

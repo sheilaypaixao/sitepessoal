@@ -185,14 +185,18 @@ form h4, .form-user h4{
   padding: 0 0 5px;
 }
 
-select, .text input,  form .text input, .form-user .text input {
+select, textarea, .text input,  form .text input, .form-user .text input {
   width: 100%;
   height: 36px;
   border:1px solid #ccc;
   padding: 10px;
 }
 
-form .file input {
+textarea{
+  height: 100px;
+}
+
+form .file input, textarea {
   font-size: 14px;
 }
 
@@ -206,7 +210,7 @@ fieldset, form fieldset, .form-user fieldset {
   border: 0px;
 }
 
-form .radio input, .form-user .radio input {
+.radio input, form .radio input, .form-user .radio input {
   margin: 10px 5px 5px 0;
 }
 
@@ -319,6 +323,13 @@ body {
 
 .col-fluid{
   padding-right:360px; /* o right, é a soma do width da coluna com o padding desejado */
+}
+
+.col-fluid-inner{
+  width: 100%;
+  padding: 0 20px;
+  margin: 0 auto;
+  float:left;
 }
 
 .box {
