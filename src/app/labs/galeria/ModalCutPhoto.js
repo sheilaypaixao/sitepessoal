@@ -166,10 +166,12 @@ export default function ModalCutPhoto({ref}) {
 		<>
 		<Modal ref={refModal} callbackClose={callbackClose}>
 			<h3>Corte a Foto</h3>
-          	<div ref={refZoneDrag} className="modal-cut">
+			<button type="button" onClick={onClickCut}>Cortar</button>
+			
+			<div ref={refZoneDrag} className="modal-cut">
           		<img src={imgCurrent.url} className={imgCurrent.classN} />
           	</div>
-          	<button type="button" onClick={onClickCut}>Cortar</button>
+          	
         </Modal>
         {visible && createPortal(<div ref={refDrag} onDrop={dropHandler} style={{transform: `translate(${position.x}px, ${position.y}px)` }} draggable="true" className="frame-cut" onDrag={drag} onDragStart={dragStart} onDragEnd={dragEnd}></div>, document.body)}
         </>

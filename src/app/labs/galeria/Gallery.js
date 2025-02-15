@@ -27,24 +27,7 @@ export default function Gallery({ref, animation}) {
 	useImperativeHandle(ref, () => {
 	    return {
 	    	goToLastPhoto: goToLastPhoto,
-	    	addPhoto: addPhoto,
-			addPhoto2(file){
-				if(file && file.type && file.type == "file"){
-					const reader = new FileReader();
-					reader.addEventListener("load", () => {
-
-						let dim = getDimensions(reader.result);
-
-						dim.then((classN) => {
-							setLstPhotos([...lstPhotos, {url: reader.result, classN: classN}]);
-						})
-					}, false);
-				
-					if (file.files[0]) {
-						reader.readAsDataURL(file.files[0]);
-					}
-				}
-			}
+	    	addPhoto: addPhoto
 		};
 	}, [{}]);
 
@@ -53,6 +36,12 @@ export default function Gallery({ref, animation}) {
 	}
 
 	function addPhoto(imgConfig){
+
+		//console.log(imgConfig);
+
+		imgConfig.left = (imgConfig.left)? imgConfig.left: 0;
+		imgConfig.top = (imgConfig.top)? imgConfig.top: 0;
+
 		setLstPhotos([...lstPhotos, imgConfig]);
 		setCurrentPhoto(lstPhotos.length);
 	}
@@ -86,8 +75,6 @@ export default function Gallery({ref, animation}) {
 
 		setCurrentPhoto(currentPhoto+1);
 		setDir("next");
-
-		//doAnimate();
 	}
 
 	function prevPhoto(e){
@@ -98,9 +85,11 @@ export default function Gallery({ref, animation}) {
 	}
 
 	function getImgLast(){
-		let photo = (dir=="next")? currentPhoto-1:currentPhoto+1;
+		let index = (dir=="next")? currentPhoto-1:currentPhoto+1;
+		let photo = lstPhotos[index];
+		if(!photo) return;
 
-		return <div ref={refLast} className="photo-overflow last-img"><img style={{top: `${lstPhotos[photo].top}px`, left: `${lstPhotos[photo].left}px` }} className={lstPhotos[photo].classN} src={lstPhotos[photo].url} /></div>;
+		return <div ref={refLast} className="photo-overflow last-img"><img style={{top: `${photo.top}px`, left: `${photo.left}px` }} className={photo.classN} src={photo.url} /></div>;
 	}
 
 	return(

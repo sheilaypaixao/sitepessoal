@@ -191,6 +191,9 @@
   max-width: 454px;
 }
 
+.modal button {
+  margin-bottom: 10px;
+}
 
 @media screen and (min-width: 1024px) {
 

@@ -33,6 +33,8 @@ export default function Home() {
     
     let imgConfig = refModalCut.current!.getDimensionsCut();
 
+    //console.log(imgConfig);
+
     refGallery.current!.addPhoto(imgConfig);
   }
 
@@ -72,7 +74,7 @@ export default function Home() {
               <form id="form-gallery" onSubmit={submitGallery}>
                 <fieldset className="file">
                   <label htmlFor="fieldFile">Foto</label>
-                  <input type="file" id="fieldFile" name="photo" onChange={changeFile} />
+                  <input type="file" required id="fieldFile" name="photo" onChange={changeFile} />
                 </fieldset>
                 <button type="submit">Adicionar</button>
               </form>
