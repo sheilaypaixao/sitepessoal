@@ -12,6 +12,7 @@ $break-large: 1200px;
 html,
 body {
   font-size: 14px;
+  color:#000;
 }
 
 body {
@@ -31,11 +32,6 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}
 
 /*******************/
 /***** Header *****/
@@ -64,6 +60,7 @@ h2 {
   padding: 50px 0 10px;
   font-size: 25px;
   color: #685f57;
+  clear:both;
 }
 h3 {
   padding: 10px 0;

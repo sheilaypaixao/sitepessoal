@@ -13,6 +13,13 @@ export default function MenuStudyJS(){
             <li><a href="/labs/pagination">Paginação e Pesquisa</a></li>
             <li><a href="/labs/tabs">Tabs</a></li>
           </ul>
+    
+    <h2>Projetos de Javascript em React</h2>
+
+    <ul className="lst-box">
+      <li><a href="https://ecommerceplants.vercel.app/" target="_blank">Ecommerce de Plantas Fake</a></li>
+    </ul>
+
     </>
 	);
 }
