@@ -7,7 +7,7 @@ export default function FormCommon({callbackSubmit, lstUser, setLstUser, edit, s
   //console.log(edit);
 
   useEffect(() => {
-    console.log("effect form");
+    //console.log("effect form");
     if(!isEdit){
       //callbackSubmit();
     }

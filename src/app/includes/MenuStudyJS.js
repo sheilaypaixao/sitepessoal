@@ -20,6 +20,12 @@ export default function MenuStudyJS(){
       <li><a href="https://ecommerceplants.vercel.app/" target="_blank">Ecommerce de Plantas Fake</a></li>
     </ul>
 
+    <h2>Projetos Backend em Python/Django/RestFramework e Frontend em React/Typescript</h2>
+
+    <ul className="lst-box">
+      <li><a href="https://ermfrontend.vercel.app/" target="_blank">Ecommerce de Plantas Fake</a></li>
+    </ul>
+
     </>
 	);
 }
