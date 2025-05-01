@@ -23,7 +23,7 @@ export default function MenuStudyJS(){
     <h2>Projetos Backend em Python/Django/RestFramework e Frontend em React/Typescript</h2>
 
     <ul className="lst-box">
-      <li><a href="https://ermfrontend.vercel.app/" target="_blank">Ecommerce de Plantas Fake</a></li>
+      <li><a href="https://ermfrontend.vercel.app/" target="_blank">Sistema de controle de tarefas</a></li>
     </ul>
 
     </>
